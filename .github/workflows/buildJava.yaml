@@ -1,30 +1,30 @@
-name: Bonjour
-on: [push] # Ce workflow se déclenche sur un push dans le dépôt
+name: "Java CI with Maven - Test and package"
+on:
+  pull_request:
+    branches: [main]
 jobs:
-  Salutations: # Nom du job : Salutations
-    name: Salutations
-    runs-on: ubuntu-latest # OS où s'exécute le job
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - name: Hello #une tâche pour saluer
-        env:
-          personneASaluer: 'Mon voisin Totoro'
-        run: echo "Bonjour ${personneASaluer}"
-      - name: L'heure de salutation # affiche l'heure de la précédente tâche
-        run: echo "L'heure était $(date)."
-#name: "Java CI with Maven - Test and package"
-#on:
-#  pull_request:
-#    branches: [main]
+      - name: Checkout # Accède au repo
+        uses: actions/checkout@v4
+      - name: Setup JDK 21 # Setup la version de JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'corretto'
+      - name: Build with Maven # Crée le package avec Maven
+        run: mvn -B package
+#name: Bonjour
+#on: [push] # Ce workflow se déclenche sur un push dans le dépôt
 #jobs:
-#  build:
-#    runs-on: ubuntu-latest
+#  Salutations: # Nom du job : Salutations
+#    name: Salutations
+#    runs-on: ubuntu-latest # OS où s'exécute le job
 #    steps:
-#      - name: Checkout # Accède au repo
-#        uses: actions/checkout@v4
-#      - name: Setup JDK 21 # Setup la version de JDK
-#        uses: actions/setup-java@v4
-#        with:
-#          java-version: '21'
-#          distribution: 'corretto'
-#      - name: Build with Maven # Crée le package avec Maven
-#        run: mvn -B package
+#      - name: Hello #une tâche pour saluer
+#        env:
+#          personneASaluer: 'Mon voisin Totoro'
+#        run: echo "Bonjour ${personneASaluer}"
+#      - name: L'heure de salutation # affiche l'heure de la précédente tâche
+#        run: echo "L'heure était $(date)."
