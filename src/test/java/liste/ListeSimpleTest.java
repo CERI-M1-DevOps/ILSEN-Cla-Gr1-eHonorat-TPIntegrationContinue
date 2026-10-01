@@ -116,7 +116,7 @@ public class ListeSimpleTest {
     @Test
     public void supprimeTousListeVide() {
         listeATester.supprimePremier(1);
-        assertNull(listeATester);
+        //assertNull(listeATester);
         assertEquals(0, listeATester.getSize());
     }
 
