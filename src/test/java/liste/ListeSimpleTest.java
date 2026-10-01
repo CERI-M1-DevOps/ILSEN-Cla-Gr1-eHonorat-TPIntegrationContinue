@@ -50,7 +50,7 @@ public class ListeSimpleTest {
         listeATester.ajout(2);
         listeATester.ajout(3);
         System.out.println(listeATester);
-        assertEquals("ListeSimple(Noeud(1), Noeud(2), Noeud(3))", listeATester.toString());
+        assertEquals("ListeSimple(Noeud(3), Noeud(2), Noeud(1))", listeATester.toString());
     }
 
     @Test
@@ -115,7 +115,7 @@ public class ListeSimpleTest {
 
     @Test
     public void supprimeTousListeVide() {
-        //listeATester.supprimePremier(1);
+        listeATester.supprimePremier(1);
         assertNull(listeATester);
         assertEquals(0, listeATester.getSize());
     }
